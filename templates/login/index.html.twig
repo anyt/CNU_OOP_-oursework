@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Вхід на сайт бронювання ресурсів{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-2">
+
+                <h1>Вхід</h1>
+
+                <p>
+                    Демо доступи:<br/>
+                <table class="table">
+                    <tr>
+                        <th>Імʼя</th>
+                        <th>Пароль</th>
+                        <th>Роль</th>
+                    </tr>
+                    <tr>
+                        <td>admin</td>
+                        <td>admin</td>
+                        <td>Адміністратор</td>
+                    </tr>
+                    <tr>
+                        <td>test</td>
+                        <td>test</td>
+                        <td>Клієнт</td>
+                    </tr>
+                </table>
+                </p>
+                {% if error %}
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <form action="{{ path('app_login') }}" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Імʼя</label>
+                        <input type="text" class="form-control" id="username" name="_username"
+                               value="{{ last_username }}"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <input type="password" class="form-control" id="password" name="_password"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Вхід</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

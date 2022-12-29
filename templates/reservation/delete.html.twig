@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Видалити бронювання{% endblock %}
+
+{% block body %}
+    <h1>
+        Видалити бронювання для <b>{{ reservation.client.username }}</b>, from
+        <b>{{ reservation.startsAt|date('m/d/Y') }}</b> to <b>{{ reservation.endsAt|date('m/d/Y') }}</b>
+    </h1>
+
+
+
+    <p>Ви впевнені що хочете видалити бронювання</p>
+    {{ include('reservation/_delete_form.html.twig') }}
+{% endblock %}

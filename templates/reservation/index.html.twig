@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Бронювання{% endblock %}
+
+{% block body %}
+    <h1>Бронювання</h1>
+
+    <h2>Запити</h2>
+    <div class="col-lg-12">
+        {{ include('reservation/_full_list.html.twig', {'reservations': requested}) }}
+    </div>
+
+    <h2>Підтверджені</h2>
+    <div class="col-lg-12">
+        {{ include('reservation/_full_list.html.twig', {'reservations': approved}) }}
+    </div>
+
+    <h2>Оплачені</h2>
+    <div class="col-lg-12">
+        {{ include('reservation/_full_list.html.twig', {'reservations': paid}) }}
+    </div>
+
+    <h2>Відмінені</h2>
+    <div class="col-lg-12">
+        {{ include('reservation/_full_list.html.twig', {'reservations': canceled}) }}
+    </div>
+
+    <h2>Завершені</h2>
+    <div class="col-lg-12">
+        {{ include('reservation/_full_list.html.twig', {'reservations': completed}) }}
+    </div>
+{% endblock %}

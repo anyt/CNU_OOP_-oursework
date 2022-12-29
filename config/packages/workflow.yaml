@@ -1,0 +1,33 @@
+framework:
+  workflows:
+    reservation:
+      type: 'state_machine'
+      marking_store:
+        type: 'method'
+        property: 'stateValue'
+      supports:
+        - App\Entity\Reservation
+      initial_marking: requested
+      places:
+        - requested
+        - approved
+        - paid
+        - completed
+        - canceled
+      transitions:
+        approve:
+          guard: "is_granted('ROLE_ADMIN')"
+          from: requested
+          to: approved
+        pay:
+          guard: "is_granted('ROLE_ADMIN')"
+          from: approved
+          to: paid
+        complete:
+          guard: "is_granted('ROLE_ADMIN')"
+          from: paid
+          to: completed
+        cancel:
+          guard: "is_granted('ROLE_ADMIN') or subject.getClient() == user"
+          from: [ requested, approved ]
+          to: canceled

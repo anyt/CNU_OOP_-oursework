@@ -1,0 +1,5 @@
+<form style="display: inline" method="post" action="{{ path('app_resource_delete', {'id': resource.id}) }}"
+      onsubmit="return confirm('Ви впевнені що хочете видалити запис?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ resource.id) }}">
+    <button class="btn btn-link text-danger">Видалити</button>
+</form>

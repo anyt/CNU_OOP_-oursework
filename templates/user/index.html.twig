@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Користувачі{% endblock %}
+
+{% block body %}
+    <h1>Користувачі</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Імʼя</th>
+            <th>Телефон</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td><a href="{{ path('app_user_show', {'id': user.id}) }}">{{ user.username }}</a></td>
+                <td>{{ user.phone }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">немає записів</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

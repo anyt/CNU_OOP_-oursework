@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('app_reservation_delete', {'id': reservation.id}) }}">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ reservation.id) }}">
+    <button class="btn btn-danger">Видатили</button>
+    <a class="btn btn-link" href="{{ path('app_resource_show', {'id': reservation.resource.id}) }}">Повернутися
+        до {{ reservation.resource.name }}</a>
+
+</form>

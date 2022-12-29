@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Створити ресурс{% endblock %}
+
+{% block body %}
+    <h1>Створити ресурс</h1>
+
+    {{ include('resource/_form.html.twig') }}
+
+    <a href="{{ path('app_resource_index') }}">повернутися до списку</a>
+{% endblock %}

@@ -1,0 +1,31 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Клієнт</th>
+        <th>Статус</th>
+        <th>Початок</th>
+        <th>Кінець</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation.client.username }}</td>
+            <td>{{ reservation.state.value|trans }}</td>
+            <td>{{ reservation.startsAt ? reservation.startsAt|date('m/d/Y') : '' }}</td>
+            <td>{{ reservation.endsAt ? reservation.endsAt|date('m/d/Y') : '' }}</td>
+            <td>
+                {% for transition in workflow_transitions(reservation) %}
+                    <a class="btn btn-link"
+                       href="{{ path('app_reservation_transit', {id: reservation.id, transition: transition.name}) }}">{{ transition.name|trans }}</a>
+                {% endfor %}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">немає записів</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

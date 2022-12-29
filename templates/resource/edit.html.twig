@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Редагувати ресурс{% endblock %}
+
+{% block body %}
+    <h1>Редагувати ресурс</h1>
+
+    {{ include('resource/_form.html.twig', {'button_label': 'Оновити'}) }}
+
+    <a href="{{ path('app_resource_index') }}">повернутися до списку</a>
+
+    {{ include('resource/_delete_form.html.twig') }}
+{% endblock %}
